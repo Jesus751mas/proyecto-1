@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Materiales</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+  <!-- ============ 1. LOGIN ============ -->
+  <section id="login" class="pantalla">
+    <div class="encabezado">
+      <h1>Bienvenido</h1>
+      <p>Sistema de calculo de materiales de construccion</p>
+    </div>
+    <div class="cuerpo centrado">
+      <div class="logo"></div>
+      <h2>Calculadora de Materiales</h2>
+      <p class="subtitulo">Ingresa tus datos para acceder</p>
+
+      <label>Usuario</label>
+      <input type="text" id="loginUsuario" placeholder="Ingresa tu usuario">
+
+      <label>Contrasena</label>
+      <input type="password" id="loginClave" placeholder="********">
+
+      <button class="boton" onclick="iniciarSesion()">Iniciar sesion</button>
+      <a class="enlace" onclick="mostrarPantalla('registro')">No tienes cuenta? Registrate</a>
+      <a class="enlace" onclick="mostrarPantalla('recuperar')">Olvidaste tu contrasena?</a>
+    </div>
+  </section>
+
+  <!-- ============ 2. REGISTRO ============ -->
+  <section id="registro" class="pantalla oculta">
+    <div class="encabezado">
+      <h1>Crear cuenta</h1>
+      <p>Registrate para empezar a calcular</p>
+    </div>
+    <div class="cuerpo centrado">
+      <h2>Registro de usuario</h2>
+      <p class="subtitulo">Vas a poder iniciar sesion con estos datos</p>
+
+      <label>Nombre completo</label>
+      <input type="text" id="regNombre" placeholder="Ej: Juan Perez">
+
+      <label>Usuario</label>
+      <input type="text" id="regUsuario" placeholder="Elige un usuario">
+
+      <label>Contrasena</label>
+      <input type="password" id="regClave" placeholder="Minimo 6 caracteres">
+
+      <label>Confirmar contrasena</label>
+      <input type="password" id="regClave2" placeholder="Repite la contrasena">
+
+      <button class="boton" onclick="registrarUsuario()">Registrarme</button>
+      <a class="enlace" onclick="mostrarPantalla('login')">Ya tienes cuenta? Iniciar sesion</a>
+    </div>
+  </section>
+
+  <!-- ============ 3. RECUPERAR USUARIO ============ -->
+  <section id="recuperar" class="pantalla oculta">
+    <div class="encabezado">
+      <h1>Recuperar acceso</h1>
+      <p>Crea una nueva contrasena para tu usuario</p>
+    </div>
+    <div class="cuerpo centrado">
+      <h2>Recuperar cuenta</h2>
+      <p class="subtitulo">Escribe tu usuario y tu nombre completo para verificar que eres tu</p>
+
+      <label>Usuario</label>
+      <input type="text" id="recUsuario" placeholder="Tu usuario">
+
+      <label>Nombre completo</label>
+      <input type="text" id="recNombre" placeholder="Como te registraste">
+
+      <label>Nueva contrasena</label>
+      <input type="password" id="recClave" placeholder="Minimo 6 caracteres">
+
+      <button class="boton" onclick="recuperarCuenta()">Cambiar contrasena</button>
+      <a class="enlace" onclick="mostrarPantalla('login')">Volver a iniciar sesion</a>
+    </div>
+  </section>
+
+  <!-- ============ 4. MENU PRINCIPAL ============ -->
+  <section id="menu" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 id="saludo">Hola</h1>
+      <p>Elige que quieres calcular</p>
+    </div>
+    <div class="cuerpo">
+      <div class="opcion" onclick="mostrarPantalla('muro')"><span class="numero">1</span> Calcular muro de ladrillo <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('viga')"><span class="numero">2</span> Calcular viga de hormigon <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('columnas')"><span class="numero">3</span> Calcular columnas de hormigon <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('contrapiso')"><span class="numero">4</span> Calcular contrapisos <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('techo')"><span class="numero">5</span> Calcular techo <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('pisos')"><span class="numero">6</span> Calcular pisos <b>&gt;</b></div>
+      <div class="opcion" onclick="mostrarPantalla('pintura')"><span class="numero">7</span> Calcular pintura <b>&gt;</b></div>
+      <div class="opcion salir" onclick="cerrarSesion()"><span class="numero">8</span> Salir</div>
+    </div>
+  </section>
+
+  <!-- ============ 5. MURO DE LADRILLO ============ -->
+  <section id="muro" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular muro de ladrillo</h1>
+      <p>Opcion 1 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Espesor del muro</label>
+      <div class="dos-botones">
+        <button id="btn20" class="espesor" onclick="elegirEspesor(20)">20 cm</button>
+        <button id="btn30" class="espesor activo" onclick="elegirEspesor(30)">30 cm &#10003;</button>
+      </div>
+
+      <label>Largo del muro (m)</label>
+      <input type="number" id="muroLargo" placeholder="Ej: 5.5">
+
+      <label>Alto del muro (m)</label>
+      <input type="number" id="muroAlto" placeholder="Ej: 2.6">
+
+      <button class="boton" onclick="calcularMuro()">Calcular</button>
+      <div id="resMuro" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 6. VIGA DE HORMIGON ============ -->
+  <section id="viga" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular viga de hormigon</h1>
+      <p>Opcion 2 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Largo de la viga (m)</label>
+      <input type="number" id="vigaLargo" placeholder="Ej: 4">
+
+      <label>Ancho de la viga (cm)</label>
+      <input type="number" id="vigaAncho" placeholder="Ej: 20">
+
+      <label>Alto de la viga (cm)</label>
+      <input type="number" id="vigaAlto" placeholder="Ej: 30">
+
+      <label>Cantidad de vigas</label>
+      <input type="number" id="vigaCantidad" placeholder="Ej: 3">
+
+      <button class="boton" onclick="calcularViga()">Calcular</button>
+      <div id="resViga" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. COLUMNAS DE HORMIGON ============ -->
+  <section id="columnas" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular columnas</h1>
+      <p>Opcion 3 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Cantidad de columnas</label>
+      <input type="number" id="colCantidad" placeholder="Ej: 6">
+
+      <label>Alto de cada columna (m)</label>
+      <input type="number" id="colAlto" placeholder="Ej: 2.6">
+
+      <label>Lado 1 de la base (cm)</label>
+      <input type="number" id="colLado1" placeholder="Ej: 25">
+
+      <label>Lado 2 de la base (cm)</label>
+      <input type="number" id="colLado2" placeholder="Ej: 25">
+
+      <button class="boton" onclick="calcularColumnas()">Calcular</button>
+      <div id="resColumnas" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 8. CONTRAPISO ============ -->
+  <section id="contrapiso" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular contrapisos</h1>
+      <p>Opcion 4 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Largo del piso (m)</label>
+      <input type="number" id="conLargo" placeholder="Ej: 5">
+
+      <label>Ancho del piso (m)</label>
+      <input type="number" id="conAncho" placeholder="Ej: 4">
+
+      <label>Espesor del contrapiso (cm)</label>
+      <input type="number" id="conEspesor" placeholder="Ej: 8">
+
+      <button class="boton" onclick="calcularContrapiso()">Calcular</button>
+      <div id="resContrapiso" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 9. TECHO ============ -->
+  <section id="techo" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular techo</h1>
+      <p>Opcion 5 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Largo de la casa (m)</label>
+      <input type="number" id="techoLargo" placeholder="Ej: 8">
+
+      <label>Ancho de la casa (m)</label>
+      <input type="number" id="techoAncho" placeholder="Ej: 6">
+
+      <button class="boton" onclick="calcularTecho()">Calcular</button>
+      <div id="resTecho" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 10. PISOS ============ -->
+  <section id="pisos" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular pisos</h1>
+      <p>Opcion 6 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Largo del cuarto (m)</label>
+      <input type="number" id="pisoLargo" placeholder="Ej: 5">
+
+      <label>Ancho del cuarto (m)</label>
+      <input type="number" id="pisoAncho" placeholder="Ej: 4">
+
+      <label>Lado de la baldosa (cm)</label>
+      <input type="number" id="pisoBaldosa" placeholder="Ej: 40">
+
+      <button class="boton" onclick="calcularPisos()">Calcular</button>
+      <div id="resPisos" class="resultado oculta"></div>
+    </div>
+  </section>
+
+  <!-- ============ 11. PINTURA ============ -->
+  <section id="pintura" class="pantalla oculta">
+    <div class="encabezado">
+      <h1 class="atras" onclick="mostrarPantalla('menu')">&lt; Calcular pintura</h1>
+      <p>Opcion 7 del menu principal</p>
+    </div>
+    <div class="cuerpo">
+      <label>Largo total de las paredes (m)</label>
+      <input type="number" id="pinLargo" placeholder="Ej: 20">
+
+      <label>Alto de las paredes (m)</label>
+      <input type="number" id="pinAlto" placeholder="Ej: 2.6">
+
+      <label>Cantidad de manos de pintura</label>
+      <input type="number" id="pinManos" placeholder="Ej: 2">
+
+      <button class="boton" onclick="calcularPintura()">Calcular</button>
+      <div id="resPintura" class="resultado oculta"></div>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

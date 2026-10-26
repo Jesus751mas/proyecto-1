@@ -1,0 +1,207 @@
+/* ===== Colores del proyecto (variables) ===== */
+:root {
+  --naranja: #b5421f;
+  --fondo: #f4f0e8;
+  --campo: #efe8de;
+  --texto: #2b2b2b;
+  --gris: #7a746b;
+  --verde: #2e7d4f;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #dcd6cb;
+}
+
+/* Caja principal, tipo celular */
+.contenedor {
+  max-width: 420px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--fondo);
+}
+
+/* Para esconder y mostrar pantallas */
+.oculta {
+  display: none;
+}
+
+/* ===== Encabezado naranja ===== */
+.encabezado {
+  background: var(--naranja);
+  color: white;
+  padding: 30px 20px;
+}
+
+.encabezado h1 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+}
+
+.encabezado p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.atras {
+  cursor: pointer;
+}
+
+/* ===== Cuerpo ===== */
+.cuerpo {
+  padding: 20px;
+}
+
+.centrado {
+  text-align: center;
+}
+
+.centrado label {
+  text-align: left;
+}
+
+.cuerpo h2 {
+  color: var(--texto);
+  margin-bottom: 6px;
+}
+
+.subtitulo {
+  color: var(--gris);
+  margin-top: 0;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  background: var(--naranja);
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+/* ===== Formularios ===== */
+label {
+  display: block;
+  color: var(--gris);
+  font-size: 14px;
+  margin: 16px 0 6px 0;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  background: var(--campo);
+  border: 1px solid #e3dacd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.boton {
+  width: 100%;
+  padding: 15px;
+  margin-top: 22px;
+  background: var(--naranja);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: #96361a;
+}
+
+.enlace {
+  display: block;
+  margin-top: 16px;
+  color: var(--naranja);
+  cursor: pointer;
+}
+
+/* ===== Botones de espesor (20 / 30 cm) ===== */
+.dos-botones {
+  display: flex;
+  gap: 10px;
+}
+
+.espesor {
+  flex: 1;
+  padding: 14px;
+  background: var(--campo);
+  border: 1px solid #e3dacd;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.espesor.activo {
+  background: var(--naranja);
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== Menu principal ===== */
+.opcion {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e3dacd;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.opcion b {
+  margin-left: auto;
+  color: var(--gris);
+}
+
+.numero {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background: var(--naranja);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-right: 14px;
+}
+
+.opcion.salir {
+  background: #f9e8e6;
+  color: #b3281d;
+  font-weight: bold;
+  border: none;
+}
+
+/* ===== Resultado ===== */
+.resultado {
+  background: #e4ede6;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 22px;
+}
+
+.resultado h3 {
+  margin: 0 0 10px 0;
+}
+
+.resultado p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  color: var(--gris);
+}
+
+.resultado b {
+  color: var(--verde);
+}
